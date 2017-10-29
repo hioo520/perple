@@ -1,0 +1,11 @@
+
+div{margin:0;border:0;padding:0;}
+
+div#container{		
+	margin:0 auto;/*设置整个容器在浏览器中水平居中*/	
+	width:1024px;			
+	}
+div#menu {width:1024px; height:150px; border-style:dotted;border-width:0px;}
+div#left {width:300px;  border-style:solid;border-width:0px; float:left;}	
+div#content {width:724px;  float:left;}	
+div#statusbar {width:1024px; height:48px; border-style:dotted;border-width:0px; float:none; }

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="damo.mapper.UserMapper">
+	<select id="userGet" parameterType="String" resultType="User">
+		select *
+		from user where user_id= #{id}
+	</select>
+
+	<insert id="userAdd" parameterType="User">
+		insert into user (
+		user_code,user_name,user_password,user_state,user_authority)
+		values
+		(#{user_code},#{user_name},#{user_password},#{user_state},#{user_authority})
+	</insert>
+	<!-- 删除数据 @@ -->
+	<delete id="userDelete" parameterType="User">
+		delete from user where
+		user_id=
+		#{user_id}
+	</delete>
+	<!-- 更改数据 @@ -->
+	<update id="userUpdate" parameterType="User">
+		update user set
+		name=#{name} where user_id=#{id}
+	</update>
+	<!-- 遍历所有数据@@ -->
+	<select id="userList" resultType="User">
+		select * from user
+	</select>
+	<!-- 检索登录用户数据 -->
+	<select id="userLogin" parameterType="map" resultType="User">
+		select *
+		from user where user_password= #{password} and user_name= #{name}
+	</select>
+	<!-- 遍历所有数据 -->
+	<select id="userAll" resultType="User">
+		select * from user LIMIT 0, 5
+	</select>
+	<!-- 删除一条数据 -->
+	<delete id="userDeleOne" parameterType="String">
+		delete from user where
+		user_id=
+		#{id}
+	</delete>
+	<!-- 更改一条数据 -->
+	<update id="userAlertOne" parameterType="User">
+		update user set
+		`user_code` = #{user_code},
+		`user_name` = #{user_name},
+		`user_password`
+		= #{user_password},
+		`user_state` = #{user_state},
+		`user_authority` =
+		#{user_authority}
+		where `user_id` = #{user_id}
+	</update>
+	<!-- paging查询 -->
+	<!-- 遍历所有数据 -->
+	<!-- SELELCT COUNT(*) AS 及格人数 FROM Score WHERE Score >=60 -->
+	<select id="pagingUserCount" resultType="_int">
+		select COUNT(*) AS
+		user_code from user
+	</select>
+	<!-- 查询分页记录 -->
+	<!-- SELECT * FROM USER LIMIT 9, 10 -->
+	<select id="pagingUserLimit" parameterType="map" resultType="User">
+		SELECT * FROM USER LIMIT ${begin}, ${end}
+	</select>
+
+
+
+</mapper>   			
